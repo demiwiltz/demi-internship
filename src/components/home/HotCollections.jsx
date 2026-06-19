@@ -2,8 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const HotCollections = () => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+      axios.get('https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections')
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+
+
+
+
   return (
     <section id="section-collections" className="no-bottom">
       <div className="container">
