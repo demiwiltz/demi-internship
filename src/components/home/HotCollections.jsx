@@ -41,6 +41,7 @@ var settings = {
 };
 
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -49,11 +50,30 @@ var settings = {
       )
       .then((response) => {
         setData(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
   }, []);
+
+      const SkeletonCard = () => (
+  <div style={{ marginRight: "10px" }}>
+    <div className="nft_coll">
+      <div className="nft_wrap">
+        <div className="skeleton skeleton-image" />
+      </div>
+      <div className="nft_coll_pp">
+        <div className="skeleton skeleton-avatar" />
+      </div>
+      <div className="nft_coll_info">
+        <div className="skeleton skeleton-text" style={{ width: "60%" }} />
+        <div className="skeleton skeleton-text" style={{ width: "40%" }} />
+      </div>
+    </div>
+  </div>
+);
 
   return (
     <>
@@ -67,9 +87,11 @@ var settings = {
               </div>
             </div>
             <Slider {...settings}>
-              {data.map((collection, index) => (
+              {isLoading
+    ? Array.from({ length: 4 }).map((_, index) => <SkeletonCard key={index} />) 
+             : data.map((collection, index) => (
                 <div
-                  key={index} style={{ marginRight: "10px" }}
+                  key={index}
                 >
                   <div className="nft_coll">
                     <div className="nft_wrap">
