@@ -31,7 +31,7 @@ const ItemDetails = () => {
       });
   }, [nftId]);
 
-  if (!nft) return null;
+
 
   return (
     <div id="wrapper">
@@ -77,7 +77,7 @@ const ItemDetails = () => {
                           </Link>
                         </div>
                         <div className="author_list_info">
-                          <Link to="/author">{nft.ownerName}</Link>
+                          <Link to="/author">{nft.img}</Link>
                         </div>
                       </div>
                     </div>
