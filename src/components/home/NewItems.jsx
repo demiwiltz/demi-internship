@@ -87,8 +87,8 @@ axios.get("https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems")
       </Link>
     </div>
     <div className="nft__item_wrap">
-      <Link to="#" style={{display: "block", width: "100%", height: "350px", alignSelf: "stretch",
-    flex: "1"}}>
+     
+  <div className="skeleton-img"></div>
         <div style={{
           width: "100%",
           height: "350px",
@@ -98,7 +98,7 @@ axios.get("https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems")
           borderRadius: "8px",
           display: "block"
         }}></div>
-      </Link>
+      
     </div>
     <div className="nft__item_info">
       <div className="skeleton-line"></div>
